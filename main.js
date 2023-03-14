@@ -24,6 +24,9 @@ const sendQuery = (repName) => {
 }
 async function getReps(repName) {
     try {
+        if (!repName) {
+            return buildList(0);
+        }
         let repsJson = await sendQuery(repName);
         let resultsJSON = (repsJson["items"]).slice(0, RESULTS_AMOUNT);
         //console.dir(resultsJSON);
